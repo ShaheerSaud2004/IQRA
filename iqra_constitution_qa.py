@@ -69,12 +69,26 @@ st.markdown("""
     
     /* Header container styling */
     .header-container {
-        background: #ffffff !important;
-        padding: 2rem 0 1rem 0;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+        padding: 1rem 0;
         margin-bottom: 2rem;
-        border-bottom: 2px solid #e2e8f0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border-bottom: 3px solid transparent;
+        border-image: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899) 1;
+        box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .header-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+        pointer-events: none;
     }
     
     /* Force sidebar to be white */
@@ -743,47 +757,44 @@ def create_cached_vector_store(text):
     return create_vector_store(text)
 
 def main():
-    # Professional Header with Logo
+    # Professional Header without Logo - Clean Design
     st.markdown('<div class="header-container">', unsafe_allow_html=True)
     
-    # Create a centered layout for logo and title
-    col_left, col_center, col_right = st.columns([1, 2, 1])
-    
-    with col_center:
-        # Logo and title in vertical alignment
-        st.markdown('<div style="text-align: center; padding: 1rem 0;">', unsafe_allow_html=True)
-        
-        # Logo section
-        try:
-            st.image("ICEB.png", width=120, use_container_width=False)
-        except:
-            st.markdown('<div style="font-size: 4rem; text-align: center;">🏛️</div>', unsafe_allow_html=True)
-        
-        # Title section
-        st.markdown('''
+    # Centered title layout
+    st.markdown('''
+    <div style="text-align: center; padding: 2rem 0;">
         <h1 style="
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             text-align: center;
             color: #1e293b;
-            margin: 1rem 0 0.5rem 0;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
+            margin: 0;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         ">📖 ICEB Constitution Chatbot</h1>
-        ''', unsafe_allow_html=True)
         
-        # Decorative line
-        st.markdown('''
+        <p style="
+            font-size: 1.1rem;
+            color: #64748b;
+            margin: 1rem 0 0 0;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        ">AI-Powered Constitutional Analysis & Research Tool</p>
+        
         <div style="
-            width: 100px;
+            width: 120px;
             height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
             border-radius: 2px;
-            margin: 0 auto 1rem auto;
+            margin: 1.5rem auto 0 auto;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
         "></div>
-        ''', unsafe_allow_html=True)
-        
-        st.markdown('</div>', unsafe_allow_html=True)
+    </div>
+    ''', unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
     
