@@ -60,50 +60,21 @@ st.markdown("""
     
     /* Professional header design */
     .main-header {
-        font-size: 2.5rem;
-        font-weight: 700;
-        text-align: center;
-        color: #1e293b !important;
-        margin-bottom: 1rem;
-        padding: 1rem 0;
-        position: relative;
-        letter-spacing: -0.025em;
-        background: #ffffff !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 120px;
-        line-height: 1.2;
+        display: none;
     }
     
-    .main-header::after {
-        content: '';
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-        border-radius: 2px;
-    }
-    
-    /* Logo container styling */
     .logo-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        height: 120px;
+        display: none;
     }
     
     /* Header container styling */
     .header-container {
         background: #ffffff !important;
-        padding: 2rem 0;
+        padding: 2rem 0 1rem 0;
         margin-bottom: 2rem;
         border-bottom: 2px solid #e2e8f0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        text-align: center;
     }
     
     /* Force sidebar to be white */
@@ -778,18 +749,44 @@ def main():
     # Professional Header with Logo
     st.markdown('<div class="header-container">', unsafe_allow_html=True)
     
-    col_logo, col_title = st.columns([1, 3])
+    # Create a centered layout for logo and title
+    col_left, col_center, col_right = st.columns([1, 2, 1])
     
-    with col_logo:
-        st.markdown('<div class="logo-container">', unsafe_allow_html=True)
+    with col_center:
+        # Logo and title in vertical alignment
+        st.markdown('<div style="text-align: center; padding: 1rem 0;">', unsafe_allow_html=True)
+        
+        # Logo section
         try:
-            st.image("ICEB.png", width=150)
+            st.image("ICEB.png", width=120, use_column_width=False)
         except:
-            st.write("🏛️")  # Fallback emoji if logo not found
+            st.markdown('<div style="font-size: 4rem; text-align: center;">🏛️</div>', unsafe_allow_html=True)
+        
+        # Title section
+        st.markdown('''
+        <h1 style="
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: #1e293b;
+            margin: 1rem 0 0.5rem 0;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        ">📖 ICEB Constitution Chatbot</h1>
+        ''', unsafe_allow_html=True)
+        
+        # Decorative line
+        st.markdown('''
+        <div style="
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+            margin: 0 auto 1rem auto;
+        "></div>
+        ''', unsafe_allow_html=True)
+        
         st.markdown('</div>', unsafe_allow_html=True)
-    
-    with col_title:
-        st.markdown('<h1 class="main-header">📖 ICEB Constitution Chatbot</h1>', unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
     
