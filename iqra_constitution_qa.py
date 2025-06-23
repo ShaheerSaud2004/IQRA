@@ -367,7 +367,7 @@ st.markdown("""
     /* Professional footer */
     .footer {
         background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
-        color: #f8fafc !important;
+        color: 1e293b !important;
         padding: 2rem;
         border-radius: 12px;
         text-align: center;
@@ -378,7 +378,7 @@ st.markdown("""
     
     .footer h3 {
         margin-bottom: 1rem !important;
-        color: #f8fafc !important;
+        color: #1e293b !important;
     }
     
     /* Professional alerts */
