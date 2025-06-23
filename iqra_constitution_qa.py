@@ -671,9 +671,6 @@ def create_vector_store(text):
 
 def initialize_qa_chain(vector_store, custom_prompt=None):
     """Initialize the QA chain with custom prompt"""
-    # Check if OpenAI API key is available
-    openai_api_key = None
-    
     # Try to get API key from Streamlit secrets (for cloud deployment)
     try:
         openai_api_key = st.secrets["general"]["OPENAI_API_KEY"]
@@ -758,7 +755,7 @@ def main():
         
         # Logo section
         try:
-            st.image("ICEB.png", width=120, use_column_width=False)
+            st.image("ICEB.png", width=120, use_container_width=False)
         except:
             st.markdown('<div style="font-size: 4rem; text-align: center;">🏛️</div>', unsafe_allow_html=True)
         
