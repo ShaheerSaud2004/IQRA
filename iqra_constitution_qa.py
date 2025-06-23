@@ -62,7 +62,7 @@ st.markdown("""
     .main-header {
         font-size: 2.5rem;
         font-weight: 700;
-        text-align: left;
+        text-align: center;
         color: #1e293b !important;
         margin-bottom: 1rem;
         padding: 1rem 0;
@@ -71,16 +71,19 @@ st.markdown("""
         background: #ffffff !important;
         display: flex;
         align-items: center;
-        height: 150px;
+        justify-content: center;
+        height: 120px;
+        line-height: 1.2;
     }
     
     .main-header::after {
         content: '';
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 3px;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
         background: linear-gradient(90deg, #3b82f6, #8b5cf6);
         border-radius: 2px;
     }
@@ -91,16 +94,16 @@ st.markdown("""
         align-items: center;
         justify-content: center;
         padding: 1rem;
-        height: 150px;
+        height: 120px;
     }
     
     /* Header container styling */
     .header-container {
         background: #ffffff !important;
-        padding: 1rem 0;
+        padding: 2rem 0;
         margin-bottom: 2rem;
-        border-bottom: 1px solid #e2e8f0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border-bottom: 2px solid #e2e8f0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
     
     /* Force sidebar to be white */
@@ -775,7 +778,7 @@ def main():
     # Professional Header with Logo
     st.markdown('<div class="header-container">', unsafe_allow_html=True)
     
-    col_logo, col_title = st.columns([1, 4])
+    col_logo, col_title = st.columns([1, 3])
     
     with col_logo:
         st.markdown('<div class="logo-container">', unsafe_allow_html=True)
